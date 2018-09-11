@@ -9,7 +9,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Mojo(name="webpack", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
@@ -74,7 +74,7 @@ public final class WebpackMojo extends AbstractFrontendMojo {
 
     private boolean shouldExecute() {
         if (triggerfiles == null || triggerfiles.isEmpty()) {
-            triggerfiles = Arrays.asList(new File(workingDirectory, "webpack.config.js"));
+            triggerfiles = Collections.singletonList(new File(workingDirectory, "webpack.config.js"));
         }
 
         return MojoUtils.shouldExecute(buildContext, triggerfiles, srcdir);

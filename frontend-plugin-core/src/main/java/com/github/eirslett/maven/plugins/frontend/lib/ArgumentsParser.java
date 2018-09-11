@@ -50,7 +50,7 @@ class ArgumentsParser {
                 continue;
             } else if (c == '"' || c == '\'') {
                 // explicit boxing allows us to use object caching of the Character class
-                Character currentQuote = Character.valueOf(c);
+                Character currentQuote = c;
                 if (quote == null) {
                     quote = currentQuote;
                 } else if (quote.equals(currentQuote)){

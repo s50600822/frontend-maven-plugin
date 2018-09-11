@@ -9,8 +9,9 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 @Mojo(name="ember", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public final class EmberMojo extends AbstractFrontendMojo {
@@ -75,7 +76,7 @@ public final class EmberMojo extends AbstractFrontendMojo {
     private boolean shouldExecute() {
 
         if (triggerfiles == null || triggerfiles.isEmpty()) {
-            triggerfiles = Arrays.asList(new File(workingDirectory, "Gruntfile.js"));
+            triggerfiles = singletonList(new File(workingDirectory, "Gruntfile.js"));
         }
 
         return MojoUtils.shouldExecute(buildContext, triggerfiles, srcdir);

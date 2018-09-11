@@ -3,7 +3,7 @@ package com.github.eirslett.maven.plugins.frontend.lib;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Collections;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -78,7 +78,7 @@ public class YarnInstaller {
             File nodeFile = executorConfig.getYarnPath();
             if (nodeFile.exists()) {
                 final String version =
-                    new YarnExecutor(executorConfig, Arrays.asList("--version"), null).executeAndGetResult(logger).trim();
+                    new YarnExecutor(executorConfig, Collections.singletonList("--version"), null).executeAndGetResult(logger).trim();
 
                 if (version.equals(yarnVersion.replaceFirst("^v", ""))) {
                     logger.info("Yarn {} is already installed.", version);

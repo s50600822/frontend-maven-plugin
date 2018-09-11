@@ -2,7 +2,7 @@ package com.github.eirslett.maven.plugins.frontend.lib;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 final class Utils {
@@ -13,7 +13,7 @@ final class Utils {
     }
 
     public static List<String> prepend(String first, List<String> list){
-        return merge(Arrays.asList(first), list);
+        return merge(Collections.singletonList(first), list);
     }
 
     public static String normalize(String path){

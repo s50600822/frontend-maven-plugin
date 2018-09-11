@@ -9,7 +9,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Mojo(name="grunt", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
@@ -74,7 +74,7 @@ public final class GruntMojo extends AbstractFrontendMojo {
 
     private boolean shouldExecute() {
         if (triggerfiles == null || triggerfiles.isEmpty()) {
-            triggerfiles = Arrays.asList(new File(workingDirectory, "Gruntfile.js"));
+            triggerfiles = Collections.singletonList(new File(workingDirectory, "Gruntfile.js"));
         }
 
         return MojoUtils.shouldExecute(buildContext, triggerfiles, srcdir);

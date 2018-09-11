@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -103,7 +104,7 @@ public class NodeInstaller {
             File nodeFile = executorConfig.getNodePath();
             if (nodeFile.exists()) {
                 final String version =
-                    new NodeExecutor(executorConfig, Arrays.asList("--version"), null).executeAndGetResult(logger);
+                    new NodeExecutor(executorConfig, Collections.singletonList("--version"), null).executeAndGetResult(logger);
 
                 if (version.equals(this.nodeVersion)) {
                     this.logger.info("Node {} is already installed.", version);
